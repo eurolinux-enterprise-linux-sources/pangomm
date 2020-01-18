@@ -4,7 +4,7 @@
 
 Name:           pangomm
 Version:        2.34.0
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        C++ interface for Pango
 
 Group:          System Environment/Libraries
@@ -87,6 +87,12 @@ find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 %{_datadir}/devhelp/
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.34.0-3
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.34.0-2
+- Mass rebuild 2013-12-27
+
 * Mon Apr 29 2013 Kalev Lember <kalevlember@gmail.com> - 2.34.0-1
 - Update to 2.34.0
 
