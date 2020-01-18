@@ -1,0 +1,133 @@
+2.34.0 (stable):
+
+* Remove the use of g_type_init() because it has been deprecated.
+  (José Alburquerque)
+	
+2.28.4 (stable):
+
+* Add #includes needed with the latest glibmm.
+  (Murray Cumming)
+  
+2.28.3 (stable):
+
+Build
+* Ship convert_pangomm.m4 in tarballs.
+	(Frederic Peters) Bug #657817
+* Don't use obsolete macros.
+  (Krzesimir Nowak)
+
+2.28.2 (stable):
+
+* Install the m4 files even without --enable-maintainer-mode, as with
+  other modules.
+  (Kalev Lember) Bug #645669
+
+2.28.1 (stable):
+
+* Avoid a tarball dependency on mm-common.
+  (Murray Cumming)
+
+2.28.0 (stable):
+
+Just a version increase and a regenerated tarball due to changes in an m4
+macro in mm-common.
+
+2.27.1 (unstable):
+
+* LayoutIter: This now has a copy constructor.
+* Layout::get_iter(): There is now a version of this method that returns a
+  LayoutIter. The version with the output parameter is now deprecated.
+
+2.26.2 (stable):
+
+* Documentation: Added main page text at index.html.
+  (David King, Murray Cumming)
+
+2.26.1 (stable):
+
+* Minor documentation improvements.
+  (Murray Cumming, José Alburquerque)
+
+2.26.0 (stable):
+
+* Minor documentation build fixes. (Daniel Elstner)
+
+2.25.1.3 (unstable):
+
+* Change public documentation location to library.gnome.org in
+  the pkg-config files as well.  (Daniel Elstner)
+
+2.25.1.2 (unstable):
+
+* Change public documentation location to library.gnome.org.
+  (Daniel Elstner)
+
+2.25.1.1 (unstable):
+
+* Reenable the per-class hierarchy graphs in the reference documentation.
+  (Daniel Elstner)
+* Drop the custom HTML header and footer, and use the shared doxygen.css
+  file from mm-common. (Daniel Elstner)
+
+2.25.1 (unstable):
+
+* Reworked the build system, using mm-common.
+  (Daniel Elstner)
+
+2.24.0 (stable):
+
+(Skipped version numbers since 2.14.1, to match pango 1.24
+(apart from the first digit, which we can't decrease.)
+
+* Layout: Added show_in_cairo_context().
+  (Louis-Francis Ratté-Boulianne) Bug #560232.
+* Build: Allow pangomm to build outside the source tree. Bug #570322
+  (Theppitak Karoonboonyanan)
+* License Header consistency. (Deng Xiyue)
+
+2.14.1 (stable):
+
+* Windows build: Use the new DLL naming convention, like boost.
+  (Armin Burgmeier)
+* Documentation:
+  - Corrected the index page for DevHelp.
+    (Deng Xiyue) Bug #559896
+
+2.14.0 (stable):
+
+* Language: Added get_scripts().
+  (Murray Cumming)
+* README and COPYING fixes.
+  (Deng Xiyue)
+* Fixed the Windows build with Visual Studio Express.
+  (Armin Burgmeier)
+
+2.13.8 (unstable):
+
+* Context: Added set_font_map() because the C function is now
+  public (non backend-only) API.
+* LayoutRun/GlyphItem: Added split() and letter().
+* Renderer: Added draw_glyph_item().
+* CairoFontMap:: Added set_default().
+  (Murray Cumming)
+* Build: Updated the MS Visual Studio 2005 build.
+  (Armin Burgmeier)
+
+2.13.7 (unstable):
+
+* Build: Require a correct version of pango.
+  (Sebastian Bacher)
+* Documentation: Correct some mentions of pangomm-2.4 to pangomm-1.4.
+  (Deng Xiyue)
+
+2.13.6 (unstable):
+
+* Layout: Added get_height(), set_height(), get_baseline().
+* LayoutIter: Added get_layout().
+* Renderer: Added get_layout() and get_layout_line().
+  (Murray Cumming)
+
+2.13.5 (unstable):
+
+This is a first version of pangomm in its own tarball.
+The API and ABI are not changed.
