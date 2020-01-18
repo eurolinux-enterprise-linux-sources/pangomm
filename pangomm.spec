@@ -2,9 +2,13 @@
 # first two digits of version
 %define release_version %(echo %{version} | awk -F. '{print $1"."$2}')
 
+%global glibmm_version 2.48.0
+%global cairomm_version 1.2.2
+%global pango_version 1.38.0
+
 Name:           pangomm
-Version:        2.34.0
-Release:        3%{?dist}
+Version:        2.40.1
+Release:        1%{?dist}
 Summary:        C++ interface for Pango
 
 Group:          System Environment/Libraries
@@ -12,11 +16,14 @@ License:        LGPLv2+
 URL:            http://www.gtkmm.org/
 Source0:        http://ftp.gnome.org/pub/GNOME/sources/pangomm/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  glibmm24-devel >= 2.14.1
-BuildRequires:  cairomm-devel >= 1.2.2
-BuildRequires:  pango-devel >= 1.23.0
+BuildRequires:  glibmm24-devel >= %{glibmm_version}
+BuildRequires:  cairomm-devel >= %{cairomm_version}
+BuildRequires:  pango-devel >= %{pango_version}
 BuildRequires:  doxygen graphviz
 
+Requires:       glibmm24%{?_isa} >= %{glibmm_version}
+Requires:       cairomm%{?_isa} >= %{cairomm_version}
+Requires:       pango%{?_isa} >= %{pango_version}
 
 %description
 pangomm provides a C++ interface to the Pango library. Highlights
@@ -28,7 +35,7 @@ quickly create complex user interfaces.
 %package devel
 Summary:        Headers for developing programs that will use %{name}
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 This package contains the libraries and header files needed for
@@ -60,7 +67,7 @@ make %{?_smp_mflags}
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%make_install
 
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 
@@ -72,7 +79,8 @@ find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 
 
 %files
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %{_libdir}/*.so.*
 
 
@@ -87,6 +95,10 @@ find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 %{_datadir}/devhelp/
 
 %changelog
+* Sun Aug 21 2016 Kalev Lember <klember@redhat.com> - 2.40.1-1
+- Update to 2.40.1
+- Resolves: #1387033
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.34.0-3
 - Mass rebuild 2014-01-24
 

@@ -1,6 +1,349 @@
-2.34.0 (stable):
+2016-07-19  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
-2012-10-26  José Alburquerque  <jaalburquerque@gmail.com>
+	Build: Fix silent builds
+
+	* configure.ac: Pass yes to AM_SILENT_RULES, thus enabling silent builds.
+	Replace MM_AX_CXX_COMPILE_STDCXX_11 by MM_AX_CXX_COMPILE_STDCXX (not necessary
+	for silent builds).
+	* docs/reference/Doxyfile.in: Set QUIET=YES.
+	Update for doxygen 1.8.11 (not necessary for silent builds).
+	Bug #768797
+
+2016-04-10  Murray Cumming  <murrayc@murrayc.com>
+
+	C++11: AttrIter, AttrList, Color: Make operator bool() explicit.
+
+	See https://bugzilla.gnome.org/show_bug.cgi?id=626858#c4
+
+2016-03-28  Murray Cumming  <murrayc@murrayc.com>
+
+	2.40
+
+2016-03-28  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate docs.xml files.
+
+2016-03-28  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate .defs.
+
+2016-03-28  Murray Cumming  <murrayc@murrayc.com>
+
+	Depend on latest glibmm-2.4
+
+	To use the latest gmmproc.
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	2.39.1
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	Depend on a recent glibmm
+
+	To use the latest gmmproc.
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	Renderer: Add get/set_alpha().
+
+	Wrapping pango_renderer_get/set_alpha(), which is new API
+	in pango 1.38.
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	Attributes: Add create_attr_foreground/background_alpha().
+
+	Wrapping new API in pango.
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate docs.xml file.
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate .defs files.
+
+2015-10-27  Murray Cumming  <murrayc@murrayc.com>
+
+	--enable-warnings=fatal: Use the same warnings as glibmm and gtkmm.
+
+2015-09-23  Murray Cumming  <murrayc@murrayc.com>
+
+	Reduce the cairomm dependency back to 1.2.2.
+
+	Because it probably works, and this is kinder.
+	Bug #755460 (Daniel Stone)
+
+2015-09-22  Murray Cumming  <murrayc@murrayc.com>
+
+	2.38.1
+
+2015-09-21  Murray Cumming  <murrayc@murrayc.com>
+
+	2.38.0
+
+2015-09-17  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Update .gitignore for MSVC-specific Items
+
+2015-09-10  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC Builds: Improve Build Speed and Debugging Experience
+
+	Use multiprocessor compilation, which can cut down build times by quite a
+	bit, and use /d2Zi+ to put more useful info into the .pdb's in release
+	builds.
+
+2015-09-10  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC Builds: Support only Visual Studio 2013 (and later)
+
+	The current pangomm code base now requires C++-11 support, which is only
+	supported well enough by Visual Studio 2013 and later, so:
+
+	-Update the Visaul Studio 2010 projects to be in 2013 format, and rename
+	things as needed.
+	-Remove the Visual Studio 2005/2008 projects
+	-Update the README.win32 file to reflect on these changes.
+
+2015-09-03  Murray Cumming  <murrayc@murrayc.com>
+
+	2.37.2
+
+2015-08-22  Murray Cumming  <murrayc@murrayc.com>
+
+	configure.ac: Require the latest glibmm.
+
+	To use the latest gmmproc, which generates more move operations,
+	and to have the latest Glib::Object/ObjectBase/Interface which have
+	move operations that those generated move operations call.
+
+2015-08-22  Murray Cumming  <murrayc@murrayc.com>
+
+	C++11: Mark all _CLASS_OPAQUE_REFCOUNTED classes as final.
+
+	Because _CLASS_OPAQUE_REFCOUNTED already generates a comment
+	telling us not to derive from them, presumably because they can
+	only be instantiated by reinterpret_cast<>ing a base C struct.
+
+	Ideally, _CLASS_OPAQUE_REFCOUNTED would add the final keyword,
+	but the class line is is not generated, so that would be a little
+	difficult.
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	2.37.1
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate pango_docs.xml
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate pango_methods.defs.
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate pango_enums.defs
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	Require the latest glibmm.
+
+	For the latest gmmproc.
+
+2015-07-15  Murray Cumming  <murrayc@murrayc.com>
+
+	configure.ac: Use MM_AX_CXX_COMPILE_STDCXX_11() from mm-common.
+
+	Instead of a copy of AX_CXX_COMPILE_STDCXX_11().
+
+2015-07-11  Murray Cumming  <murrayc@murrayc.com>
+
+	Require C++11.
+
+	configure.ac: Use AX_CXX_COMPILE_STDCXX_11 to check for compiler
+	support for C++11 and use it (--std=c++11 for current versions of
+	g++).
+
+	Among other reasons, this is because glibmm now requires C++11,
+	and its gmmrpoc generates C++11 code.
+
+2015-06-30  Maks Naumov  <maksqwe1@ukr.net>
+
+	Attribute: fix operator!=
+
+	Bug #751531
+
+2015-03-24  Murray Cumming  <murrayc@murrayc.com>
+
+	2.36.0
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	1.35.1
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	FontMap: Added get_serial().
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Context: Add get_serial().
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Layout: Add get_character_count() and get_serial().
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Doxyfile: Make this more like the latest Doxyfile.in in gtkmm.
+
+	Just to make sure that we are consistent.
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Doxyfile: Remove obsolete (according to doxygen warnings) lines.
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate _docs.xml file.
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate methods .defs file.
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerate enums .defs file.
+
+2015-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	tools/: Add gen_scripts/, as in glibmm and gtkmm.
+
+	This makes it easier to regenerate the .defs and _docs.xml files.
+
+2014-09-22  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC 2008/2010 Projects: Add "Install" Projects
+
+	This adds "install" projects for Visual Studio 2008/2010 builds so that the
+	build results can be copied to a common directory together with the
+	dependencies, so that testing and packaging will be made easier.
+
+	* MSVC_Net2008/pangomm-install.vsprops:
+	* MSVC_Net2008/install.vcproj:
+	* MSVC_Net2010/pangomm-install.props:
+	* MSVC_Net2010/install.vcxproj: Add MSVC projects and property sheets to
+	copy build results to a common directory under the root build directory.
+	* MSVC_Net2008/pangomm.sln:
+	* MSVC_Net2010/pangomm.sln: Include the "install" project in the build
+	process.
+	* MSVC_Net2008/filelist.am:
+	* MSVC_Net2010/filelist.am: Include the added projects and property sheets
+	in dist.
+
+2014-09-18  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Overhaul The Visual Studio 2010 Projects
+
+	Give the Visual Studio 2010 Projects an overhaul, by using property sheets
+	to consolidate commonly-used items, and moving all the projects to
+	MSVC_Net2010.  Also stop using the /vd2 compile-time option, as it is more
+	harm than help here, since it causes weird crashes.
+
+	* MSVC_Net2010/pangomm-build-defines.props:
+	* MSVC_Net2010/pangomm-version-paths.props: Add property sheet
+	sheets to consolidate commonly-used items items so that projects
+	can refer to them, which will help to simplify future
+	maintenance.
+	* MSVC_Net2010/gendef/gendef.vcxproj:
+	* MSVC_Net2010/gendef/gendef.vcxproj.filters:
+	* MSVC_Net2010/gendef/pangomm.vcxproj:
+	* MSVC_Net2010/gendef/pangomm.vcxproj.filters: Move to
+	MSVC_Net2010/, and clean up using the property sheets.  Adjust
+	the source file paths accordingly, and remove the /vd2 compile-
+	time option as it brings more trouble than help.  Add
+	PlatformToolset tags so to ease future move to Visual Studio
+	2012/2013.
+	* MSVC_Net2010/filelist.am:
+	* MSVC_Net2010/pangomm.sln: Update file paths accordingly.
+
+2014-09-17  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Overhaul the Visual Studio 2008 Projects
+
+	Give the Visual Studio 2008 Projects an overhaul, and clean them up in the
+	process by consolidating commonly-used items in property sheets, so to ease
+	future maintenance.
+
+	* MSVC_Net2008/pangomm-build-defines.vsprops:
+	* MSVC_Net2008/pangomm-version-paths.vsprops: Add property sheets
+	to group together commonly-used items so that the projects can
+	refer to them, so to ease future maintenance.
+	* MSVC_Net2008/pangomm/pangomm.vcproj:
+	* MSVC_Net2008/gendef/gendef.vcproj: Move to MSVC_Net2008/ and
+	clean up using the property sheets, and update the file paths
+	accordingly.  Stop building blank.cpp, as the IDE recognize the
+	.cc sources, and stop using the /vd2 option, as it is a source
+	of weird crashes.
+	* MSVC_Net2008/pangomm.sln:
+	MSVC_Net2008/filelist.am: Update file paths accordingly.
+
+2014-08-01  Andre Klapper  <a9016009@gmx.de>
+
+	doap: add <programming-language>
+
+2014-07-30  Olav Vitters  <olav@vitters.nl>
+
+	doap category core
+
+2013-09-09  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Update the MSVC Project Files
+
+	* MSVC_Net2005/gendef/gendef.vcproj:
+	MSVC_Net2008/gendef/gendef.vcproj:
+	MSVC_Net2010/gendef/gendef.vcxproj:
+	MSVC_Net2005/pangomm/pangomm.vcproj:
+	MSVC_Net2008/pangomm/pangomm.vcproj:
+	MSVC_Net2010/pangomm/pangomm.vcxproj: Clean up the project files by
+	purging unneeded entries, macros and whitespace.
+
+	Also improve on the project files by adding to the
+	AdditionalIncludeDirectories and AdditionalLibraryDirectories so that
+	they can find and use the deps from a local build directory instead
+	of using builds in the global include and libs path.  This is useful when
+	we are building an unstable release as unstable releases usually require
+	the latest unstable releases of their respective deps, which we do not
+	usually want to place where they are used globally.
+
+2013-09-09  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC Solution Files: Use DOS Line Endings
+
+	* MSVC_Net2010/pangomm.sln: Use DOS/Windows line endings as Visual
+	Studio expects .sln files to have DOS/Windows line endings in order to
+	determine the Visual Studio version to use to open the .sln files.
+
+2013-07-03  José Alburquerque  <jaalburquerque@gmail.com>
+
+	Move to a generated ChangeLog.
+
+2013-07-02  José Alburquerque  <jaalburquerque@gmail.com>
+
+	Auto-generate the ChangeLog from the git log for 'make dist'.
+
+	* Makefile.am: Include the dist-changelog.am file copied in build/
+	from mm-common so that the ChangeLog is automatically generated from
+	the git commit messages on 'make dist'.
+
+2013-04-24  Murray Cumming  <murrayc@murrayc.com>
+
+	2.34.0
+
+2012-10-26  José Alburquerque  <jaalburqu@svn.gnome.org>
 
 	Remove the use of g_type_init() because it has been deprecated.
 
@@ -8,41 +351,50 @@
 	function says that the GType system is initialized automatically now
 	as of glib-2.36.
 
-2.28.4 (stable):
+2011-10-26  Murray Cumming  <murrayc@murrayc.com>
+
+	2.28.4
 
 2011-10-25  Murray Cumming  <murrayc@murrayc.com>
 
 	Add #includes needed with the latest glibmm.
 
+	* pango/src/attributes.ccg:
 	* pango/src/attributes.hg:
 	* pango/src/color.hg:
 	* pango/src/fontdescription.hg:
 	* pango/src/fontface.hg:
 	* pango/src/fontmetrics.hg:
+	* pango/src/fontset.ccg:
 	* pango/src/item.hg:
 	* pango/src/language.hg:
-	* pango/src/layoutline.hg: Add individual includes now that gmmproc does not 
+	* pango/src/layoutline.hg: Add individual includes now that gmmproc does not
 	add #include glibmm.h at the top of every generated header.
 
-2.28.3 (stable):
+2011-09-27  Murray Cumming  <murrayc@murrayc.com>
 
-2011-09-21 Krzesimir Nowak <qdlacz@gmail.com>
+	2.28.3
 
-  Don't use obsolete macros.
-    
-  * autogen.sh: Warn about everything during autoreconf.
-  * configure.ac: Replaced obsolete macros with their modern counterparts.
-    
-2011-08-31  Frederic Peters  <fpeters@0d.be>
+2011-09-22  Krzesimir Nowak  <qdlacz@gmail.com>
 
-	Ship convert_pangomm.m4 in tarballs.
-	Bug #657817
+	Don't use obsolete macros.
 
-2011-05-24  Olav Vitters <olav@vitters.nl>
+	* autogen.sh: Warn about everything during autoreconf.
+	* configure.ac: Replaced obsolete macros with their modern counterparts.
 
-    Use tar-ustar instead of tar-pax to ensure OpenBSD compatibility
+2011-08-31  Frédéric Péters  <fpeters@0d.be>
 
-2.28.2 (stable):
+	ship convert_pangomm.m4 in tarballs
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=657817
+
+2011-05-24  Olav Vitters  <olav@vitters.nl>
+
+	Use tar-ustar instead of tar-pax to ensure OpenBSD compatibility
+
+2011-03-30  Murray Cumming  <murrayc@murrayc.com>
+
+	2.28.2
 
 2011-03-30  Murray Cumming  <murrayc@murrayc.com>
 
@@ -52,14 +404,16 @@
 	* doc/Makefile.am: Don't specify the mm-common .pl files to distribute
 	because mm-common now does this automatically.
 
-2011-03-25  Kalev Lember  <kalev@smartlink.ee>
+2011-03-26  Kalev Lember  <kalev@smartlink.ee>
 
 	Install the m4 files without --enable-maintainer-mode
 
 	* Makefile.am: Install the convert.m4 files even if we aren't in
 	maintainer mode; this makes sure distro packages pick up the files.
 
-2.28.1 (stable):
+2011-03-25  Murray Cumming  <murrayc@murrayc.com>
+
+	2.28.1
 
 2011-03-25  Murray Cumming  <murrayc@murrayc.com>
 
@@ -70,12 +424,17 @@
 	* docs/Makefile.am: Dist the copied files, so that the build does not
 	try to use the versions installed by mm-common.
 
-2.28.0 (stable):
+2011-03-23  Murray Cumming  <murrayc@murrayc.com>
 
-Just a version increase and a regenerated tarball due to changes in an m4
-macro in mm-common.
+	2.28.0
 
-2.27.1:
+2011-01-08  Murray Cumming  <murrayc@murrayc.com>
+
+	2.27.1
+
+2011-01-08  Murray Cumming  <murrayc@murrayc.com>
+
+	Added missing file
 
 2011-01-08  Murray Cumming  <murrayc@murrayc.com>
 
@@ -134,6 +493,10 @@ macro in mm-common.
 	Also include convert_pangomm.m4 - we probably used the copy in glibmm until
 	now.
 
+2010-10-01  Armin Burgmeier  <armin@arbur.net>
+
+	Add support for MSVC 2010 and 64 bit to MSVC project files
+
 2010-09-30  Armin Burgmeier  <armin@arbur.net>
 
 	* MSVC_Net2005/gendef/gendef.vcproj:
@@ -153,9 +516,15 @@ macro in mm-common.
 	* Makefile.am:
 	* configure.ac: Add support for MSVC 2010 and 64 bit.
 
-2.26.2:
+2010-06-06  Murray Cumming  <murrayc@murrayc.com>
 
-2010-05-04  Murray Cumming  <murrayc@murrayc-x61>
+	Remove unused file.
+
+2010-05-04  Murray Cumming  <murrayc@murrayc.com>
+
+	2.26.2
+
+2010-05-04  Murray Cumming  <murrayc@murrayc.com>
 
 	Documentation: Main page: Improve, linking to class and correcting pkg-config
 
@@ -176,22 +545,30 @@ macro in mm-common.
 	* docs/Makefile.am: Parse pango/pangomm.h for documentation.
 	* pango/pangomm.h: Add main page to Doxygen documentation.
 
-2.26.1:
+2010-04-18  Olav Vitters  <olav@vitters.nl>
+
+	Fix doap file
 
 2010-04-16  Murray Cumming  <murrayc@murrayc.com>
 
-    Regenerated C documentation XML.
+	2.26.1
+
+2010-04-16  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerated C documentation XML.
 
 	* pango/src/pango_docs.xml: Regenerated with the improved docextract_to_xml.py.
 
 2010-03-17  Murray Cumming  <murrayc@murrayc.com>
 
-    Regenerated pango function .defs.
+	Regenerated pango function .defs.
 
 	* pango/src/pango_methods.defs: Regnerated with h2defs.py thought there is
-    no significant change.
+	no significant change.
 
-2.26.0:
+2009-09-21  Murray Cumming  <murrayc@murrayc.com>
+
+	2.26.0
 
 2009-09-19  Daniel Elstner  <daniel.kitta@gmail.com>
 
@@ -208,7 +585,9 @@ macro in mm-common.
 	* docs/reference/Doxyfile.in: Update file using Doxygen 1.6.1.
 	(SORT_MEMBERS_CTORS_1ST): Set option to YES.
 
-2.25.1.3:
+2009-09-07  Daniel Elstner  <danielk@openismus.com>
+
+	Delete obsolete MAINTAINERS file
 
 2009-08-28  Daniel Elstner  <danielk@openismus.com>
 
@@ -278,7 +657,9 @@ macro in mm-common.
 	* docs/reference/Doxyfile.in (COLLABORATION_GRAPH): Set option
 	to YES to enable the per-class inheritance graphs.
 
-2.25.1:
+2009-08-26  Murray Cumming  <murrayc@murrayc.com>
+
+	2.25.1
 
 2009-08-25  Murray Cumming  <murrayc@murrayc.com>
 
@@ -286,8 +667,6 @@ macro in mm-common.
 
 	* pango/src/pango_docs.xml:
 	* pango/src/pango_methods.defs: Regenerated.
-
-This is the master branch. See also the pangomm-2-24 branch.
 
 2009-08-20  Daniel Elstner  <danielk@openismus.com>
 
@@ -367,7 +746,7 @@ This is the master branch. See also the pangomm-2-24 branch.
 	* pango/pangommconfig.h.in (PANGOMM_DISABLE_DEPRECATED): Copy
 	the #undef statement from the generated config.h.in template.
 
-2009-08-17  Daniel Elstner  <daniel.kitta@gmail.com>
+2009-08-17  Daniel Elstner  <danielk@openismus.com>
 
 	Append slash to overridden $(htmlrefpub)
 
@@ -420,6 +799,14 @@ This is the master branch. See also the pangomm-2-24 branch.
 
 	* pango/src/tabarray.hg: Stop using GLIBMM_USING_STD(), now
 	that it has been removed from glibmm.
+
+2009-08-12  Daniel Elstner  <danielk@openismus.com>
+
+	Delete empty pango/README file
+
+2009-08-12  Daniel Elstner  <danielk@openismus.com>
+
+	Really do delete pango/Makefile.am
 
 2009-08-12  Daniel Elstner  <danielk@openismus.com>
 
@@ -547,6 +934,10 @@ This is the master branch. See also the pangomm-2-24 branch.
 
 2009-08-11  Daniel Elstner  <danielk@openismus.com>
 
+	Create .gitignore files
+
+2009-08-11  Daniel Elstner  <danielk@openismus.com>
+
 	Begin transition to mm-common build system
 
 	* autogen.sh: Replace with minimal version using mm-common-prepare
@@ -559,28 +950,58 @@ This is the master branch. See also the pangomm-2-24 branch.
 	* MSVC_Net200[58]/pangomm/Makefile.am: Change rule dependency
 	configure.in to configure.ac.
 
+2009-06-24  Daniel Elstner  <danielk@openismus.com>
+
+	Add DOAP file and fix mail address in MAINTAINERS
+
+2009-03-09  Theppitak Karoonboonyanan  <thep@linux.thai.net>
+
+	Split out devhelp installation rule, so VPATH reference is possible for
+
 2009-03-09  Theppitak Karoonboonyanan  <thep@linux.thai.net>
 
 	* docs/reference/Makefile.am: Split out devhelp installation rule, so
 	VPATH reference is possible for both tarball and VCS builds, fixing
 	distcheck correctly.
 
-2.24.0:
+	svn path=/trunk/; revision=35
 
 2009-03-09  Murray Cumming  <murrayc@murrayc.com>
 
-	* docs/reference/Makefile.am: Added srcdir before the devhelp file, to
+	2.24.0:
+
+2009-03-09  Murray Cumming  <murrayc@murrayc.com>
+
+	* docs/reference/Makefile.am: Added srcdir before the devhelp file, to 
 	fix distcheck.
+
+	svn path=/trunk/; revision=34
+
+2009-03-09  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerated with doxextract_to_xml.py.
 
 2009-03-09  Murray Cumming  <murrayc@murrayc.com>
 
 	* pango/src/pango_docs.xml: Regenerated with doxextract_to_xml.py.
 
+	svn path=/trunk/; revision=33
+
+2009-02-05  Theppitak Karoonboonyanan  <thep@linux.thai.net>
+
+	Allow pangomm to build outside the source tree. Bug #570322
+
 2009-02-05  Theppitak Karoonboonyanan  <thep@linux.thai.net>
 
 	* docs/reference/Doxyfile.in:
-	* docs/reference/Makefile.am: Allow pangomm to build outside the source
+	* docs/reference/Makefile.am: Allow pangomm to build outside the source 
 	tree. Bug #570322
+
+	svn path=/trunk/; revision=32
+
+2009-01-19  Deng Xiyue  <manphiz@gmail.com>
+
+	Change license header to mention Lesser General Public License version 2.1
 
 2009-01-20  Deng Xiyue  <manphiz@gmail.com>
 
@@ -588,30 +1009,63 @@ This is the master branch. See also the pangomm-2-24 branch.
 	version 2.1 instead of Library General Public License, to be
 	consistent with COPYING.
 
+	svn path=/trunk/; revision=31
+
+2008-11-13  Murray Cumming  <murrayc@murrayc.com>
+
+	Add some more newin2p* aliases. Mark show_in_cairo_context as since 2.16.
+
 2008-11-13  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/reference/Doxyfile.in: Add some more newin2p* aliases.
 	* pango/src/layout.hg: Mark show_in_cairo_context as since 2.16.
 
-2008-11-12  Louis-Francis Ratté-Boulianne <louisfrancis.rb@gmail.com>
+	svn path=/trunk/; revision=30
+
+2008-11-13  Louis-Francis Ratté-Boulianne  <louisfrancis.rb@gmail.com>
+
+	Added show_in_cairo_context(). Bug #560232,
+
+	2008-11-12  Louis-Francis Ratté-Boulianne <louisfrancis.rb@gmail.com>
 
 	* pango/src/layout.cgg:
 	* pango/src/layout.hg: Added show_in_cairo_context().
 	Bug #560232,
 
-2.14.1:
+	svn path=/trunk/; revision=29
+
+2008-11-10  Murray Cumming  <murrayc@src.gnome.org>
+
+	Increased version
+
+	svn path=/trunk/; revision=27
+
+2008-11-10  Deng Xiyue  <manphiz@gmail.com>
+
+	Fix references to gtkmm, should be pangomm, and use reference index.html
 
 2008-11-08  Deng Xiyue  <manphiz@gmail.com>
 
 	* docs/reference/doxygen_to_devhelp.xsl: Fix references to gtkmm,
 	should be pangomm, and use reference index.html as start point.
 
-2008-10-23  Jonathon Jongsma  <jonathon@quotidian.org>
+	svn path=/trunk/; revision=26
 
-	* configure.in:
-	* docs/reference/Makefile.am:
-	* docs/reference/images: Removed gtk stock image stuff that was accidentally
-	left over from splitting up pangomm from gtkmm.
+2008-10-23  Jonathon Jongsma  <jjongsma@src.gnome.org>
+
+	Removed gtk stock image stuff that was accidentally left over from splitting up pangomm from gtkmm.
+
+	svn path=/trunk/; revision=25
+
+2008-10-09  Armin Burgmeier  <arminb@src.gnome.org>
+
+	Added missing MSVC 2008 solution file to the repository.
+
+	svn path=/trunk/; revision=24
+
+2008-10-09  Armin Burgmeier  <armin@openismus.com>
+
+	Changed the library DLL name to match the new naming convention.
 
 2008-10-09  Armin Burgmeier  <armin@openismus.com>
 
@@ -623,16 +1077,38 @@ This is the master branch. See also the pangomm-2-24 branch.
 	* Makefile.am:
 	* configure.in: Added the new files to the distribution.
 
-2.14.0 (wraps pango 1.22):
+	svn path=/trunk/; revision=23
+
+2008-09-21  Murray Cumming  <murrayc@src.gnome.org>
+
+	Increased version
+
+	svn path=/trunk/; revision=22
 
 2008-09-08  Deng Xiyue  <manphiz@gmail.com>
 
-	* Added COPYING.tools with the GPL because the tools/*.cc file is
+	Added COPYING.tools with the GPL because the tools/*.cc file is GPL. Bug
+
+2008-09-08  Deng Xiyue  <manphiz@gmail.com>
+
+	* Added COPYING.tools with the GPL because the tools/*.cc file is 
 	GPL. Bug #550789.
+
+	svn path=/trunk/; revision=21
+
+2008-09-08  Deng Xiyue  <manphiz@gmail.com>
+
+	Mention pangomm instead of gtkmm. Bug #550789.
 
 2008-09-08  Deng Xiyue  <manphiz@gmail.com>
 
 	* README: Mention pangomm instead of gtkmm. Bug #550789.
+
+	svn path=/trunk/; revision=20
+
+2008-08-27  Armin Burgmeier  <armin@arbur.net>
+
+	Replaced #include "afxres.h" by #include <windows.h> which does the job
 
 2008-08-27  Armin Burgmeier  <armin@arbur.net>
 
@@ -640,37 +1116,66 @@ This is the master branch. See also the pangomm-2-24 branch.
 	#include <windows.h> which does the job equally well, and allows
 	compilation with the freely available Visual Studio Express compiler.
 
+	svn path=/trunk/; revision=19
+
+2008-08-20  Murray Cumming  <murrayc@murrayc.com>
+
+	Added get_scripts().
+
 2008-08-20  Murray Cumming  <murrayc@murrayc.com>
 
 	* pango/src/language.ccg:
 	* pango/src/language.hg: Added get_scripts().
 
-2.13.8:
+	svn path=/trunk/; revision=18
+
+2008-08-20  Murray Cumming  <murrayc@src.gnome.org>
+
+	Increased version
+
+	svn path=/trunk/; revision=17
 
 2008-08-12  Murray Cumming  <murrayc@murrayc.com>
 
-	* pango/src/context.hg: Added set_font_map() because it is now public
-	(non backend-only) API.
+	Wrap this with CLASS_BOXEDTYPE() instead of _CLASS_GENERIC(), because the
 
 2008-08-12  Murray Cumming  <murrayc@murrayc.com>
 
 	* pango/src/layoutrun.ccg:
-	* pango/src/layoutrun.hg: Wrap this with CLASS_BOXEDTYPE() instead of
-	_CLASS_GENERIC(), because the PangoGlyphItem (of which PangoLayoutRun
-	is a typedef) is a boxed type. This reduces the amount of code in .hg,
+	* pango/src/layoutrun.hg: Wrap this with CLASS_BOXEDTYPE() instead of 
+	_CLASS_GENERIC(), because the PangoGlyphItem (of which PangoLayoutRun 
+	is a typedef) is a boxed type. This reduces the amount of code in .hg, 
 	while apparently not breaking API or ABI.
 	This should be renamed to GlyphItem when we can break ABI.
 
+	svn path=/trunk/; revision=16
+
+2008-08-12  Murray Cumming  <murrayc@src.gnome.org>
+
+	A few documention comments.
+
+	svn path=/trunk/; revision=15
+
 2008-08-12  Murray Cumming  <murrayc@murrayc.com>
 
-	* pango/src/layoutrun.hg: Typedef this to GlyphItem, because
+	Typedef this to GlyphItem, because that is what it is (and is documented
+
+2008-08-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* pango/src/layoutrun.hg: Typedef this to GlyphItem, because 
 	that is what it is (and is documented as) in Pango.
-	Added splt() and letter() space to LayoutRun, wrapping PangoGlyphItem
-	functions.
+	Added splt() and letter() space to LayoutRun, wrapping PangoGlyphItem 
+	functions. 
 	* tools/m4/convert_pango.m4:
 	* pango/src/renderer.hg: Added draw_glyph_item().
 
 	* pango/src/cairofontmap.hg: Added set_default().
+
+	svn path=/trunk/; revision=14
+
+2008-08-09  Armin Burgmeier  <armin@arbur.net>
+
+	Added project files to build pangomm with Visual Studio 2005.
 
 2008-08-09  Armin Burgmeier  <armin@arbur.net>
 
@@ -688,43 +1193,87 @@ This is the master branch. See also the pangomm-2-24 branch.
 	* configure.in:
 	* Makefile.am: Adapt build files.
 
-2.13.7:
+	svn path=/trunk/; revision=13
+
+2008-08-04  Murray Cumming  <murrayc@src.gnome.org>
+
+	Increased version
+
+	svn path=/trunk/; revision=12
+
+2008-08-02  Murray Cumming  <murrayc@murrayc.com>
+
+	Do not try to upload a non-existant index.html Correct the filenames.
 
 2008-08-02  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/Makefile.am: Do not try to upload a non-existant index.html
 	* docs/images/Makefile.am: Correct the filenames.
-	* docs/reference/pangomm_header.html_fragment: Change the links as
+	* docs/reference/pangomm_header.html_fragment: Change the links as 
 	in glibmm.
 
-2008-08-01  Deng Xiyue <manphiz@gmail.com>
+	svn path=/trunk/; revision=11
+
+2008-08-02  Deng Xiyue  <manphiz@gmail.com>
+
+	Fix all references of ABI version 2.4 to version 1.4, though the tarball
+
+	2008-08-01  Deng Xiyue <manphiz@gmail.com>
 
 	* docs/Makefile_web.am_fragment:
 	* docs/reference/Makefile.am:
 	* tools/m4/Makefile.am:
-	* Makefile.am: Fix all references of ABI version 2.4 to version 1.4,
-	though the tarball version (as reported by pkgconfig --modversion)
+	* Makefile.am: Fix all references of ABI version 2.4 to version 1.4, 
+	though the tarball version (as reported by pkgconfig --modversion) 
 	must stay as 2.x.
 	Bug #545537.
+
+	svn path=/trunk/; revision=10
+
+2008-08-01  Murray Cumming  <murrayc@murrayc.com>
+
+	Removed index.html. It was just a copy from gtkmm (from where I will also
 
 2008-08-01  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/Makefile.am:
-	* docs/index.html: Removed index.html. It was just a copy from
-	gtkmm (from where I will also be removing it.) The true copy is in
+	* docs/index.html: Removed index.html. It was just a copy from 
+	gtkmm (from where I will also be removing it.) The true copy is in 
 	gnomemm-website (uploaded to gtkmm.org).
+
+	svn path=/trunk/; revision=9
+
+2008-07-30  Sebastien Bacher  <seb128@ubuntu.com>
+
+	require a correct pango version (bug #545378)
 
 2008-07-30  Sebastien Bacher  <seb128@ubuntu.com>
 
 	* configure.in: require a correct pango version (bug #545378)
 
+	svn path=/trunk/; revision=8
+
+2008-07-27  Murray Cumming  <murrayc@murrayc.com>
+
+	Corrected the upload location. Corrected a variable so we really generate
+
 2008-07-27  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/Makefile_web.am_fragment: Corrected the upload location.
-	* docs/reference/Doxyfile.in: Corrected a variable so we really
+	* docs/reference/Doxyfile.in: Corrected a variable so we really 
 	generate documentation.
 
-2.13.6:
+	svn path=/trunk/; revision=7
+
+2008-07-27  Murray Cumming  <murrayc@src.gnome.org>
+
+	Increased version
+
+	svn path=/trunk/; revision=6
+
+2008-07-27  Murray Cumming  <murrayc@murrayc.com>
+
+	Regenerated.
 
 2008-07-27  Murray Cumming  <murrayc@murrayc.com>
 
@@ -732,14 +1281,29 @@ This is the master branch. See also the pangomm-2-24 branch.
 	* pango/src/pango_enums.defs:
 	* pango/src/pango_methods.defs: Regenerated.
 
-	* pango/src/layout.hg: Added get_height(), set_height(),
+	* pango/src/layout.hg: Added get_height(), set_height(), 
 	get_baseline().
 	* pango/src/layoutiter.ccg:
 	* pango/src/layoutiter.hg: Added get_layout().
 	* pango/src/renderer.hg: Added get_layout() and get_layout_line().
 
-2.13.5:
+	svn path=/trunk/; revision=5
 
-Created a standalone pangomm module from gtkmm in svn trunk,
-so that things can depend on pangomm without needing gtkmm at
-build time.
+2008-07-23  Murray Cumming  <murrayc@src.gnome.org>
+
+	Released
+
+	svn path=/trunk/; revision=4
+
+2008-07-18  Murray Cumming  <murrayc@src.gnome.org>
+
+	Now it builds and distchecks
+
+	svn path=/trunk/; revision=3
+
+2008-07-18  Murray Cumming  <murrayc@src.gnome.org>
+
+	Added pangomm source by copying from gtkmm
+
+	svn path=/trunk/; revision=2
+
